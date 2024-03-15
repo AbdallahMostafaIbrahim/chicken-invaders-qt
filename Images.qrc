@@ -10,5 +10,6 @@
         <file>sounds/chicken-single-alarm-call-6056.mp3</file>
         <file>sounds/game-over-arcade-6435.mp3</file>
         <file>sounds/soundtrack.mp3</file>
+        <file>sounds/kill.mp3</file>
     </qresource>
 </RCC>

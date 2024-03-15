@@ -35,7 +35,7 @@ Bullet::Bullet(): QGraphicsPixmapItem(),QObject()
          if (typeid(*(colliding_items[i])) == typeid(Chick)){
              // increase score
              Stats::increase();
-             soundEffect->setSource(QUrl("qrc:/sounds/sounds/chicken-single-alarm-call-6056.mp3"));
+             soundEffect->setSource(QUrl("qrc:/sounds/sounds/kill.mp3"));
              soundEffect->play();
 
              // remove them both
