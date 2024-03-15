@@ -15,15 +15,17 @@ QGraphicsTextItem* Stats::scoreText = nullptr;
 void Stats::setHealthText(QGraphicsTextItem* hText) {
     healthText = hText;
     healthText->setDefaultTextColor(Qt::red);
+    healthText->setFont(QFont("serif", 22));
     healthText->setPlainText("Health: " + QString::number(health));
     healthText->setPos(10,20);
 }
 
 void Stats::setScoreText(QGraphicsTextItem* sText){
     scoreText = sText;
-    scoreText->setDefaultTextColor(Qt::blue);
+    scoreText->setDefaultTextColor(QColor(0x86BCFE));
+    scoreText->setFont(QFont("serif", 22));
     scoreText->setPlainText("Score: " + QString::number(score));
-    scoreText->setPos(10,40);
+    scoreText->setPos(10,50);
 }
 
 void Stats::increase() {
