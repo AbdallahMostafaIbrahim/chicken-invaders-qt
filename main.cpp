@@ -1,9 +1,8 @@
-#include "mainwindow.h"
-
 #include <QApplication>
-#include "chick.h"
+#include "SpaceShip.h"
 #include <QGraphicsScene>
 #include <QGraphicsView>
+#include <QObject>
 #include <QTimer>
 
 int main(int argc, char *argv[])
@@ -13,7 +12,7 @@ int main(int argc, char *argv[])
     QGraphicsScene * scene = new QGraphicsScene();
 
     // add chick to the scene
-    QGraphicsPixmapItem * player = new Chick ();
+    QGraphicsPixmapItem * player = new SpaceShip ();
     //player->setPos()
 
     //add player to scene
@@ -37,10 +36,10 @@ int main(int argc, char *argv[])
     player->setPos(view->width()/2,view->height() - player->pixmap().height());
 
 
-    // spawn enemies
-   /* QTimer * timer = new QTimer();
+     // spawn enemies
+    QTimer * timer = new QTimer();
     QObject::connect(timer,SIGNAL(timeout()),player,SLOT(spawn()));
     timer->start(2000);
-    */
+
     return a.exec();
 }

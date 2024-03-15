@@ -6,15 +6,14 @@
 class Chick : public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
+private:
+    bool goRight;
+
 public:
     Chick();
-   // void move();
-   // void gameover();
-    //void keyPressEvent(QKeyEvent * event);
 
 public slots:
-    //void spawn();
-
+    void move();
 };
 
 #endif // CHICK_H
