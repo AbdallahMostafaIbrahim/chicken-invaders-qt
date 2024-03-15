@@ -11,10 +11,6 @@ class SpaceShip : public QObject, public QGraphicsPixmapItem
 public:
     SpaceShip();
     void keyPressEvent(QKeyEvent * event);
-
-public slots:
-    void spawn();
-
 };
 
 #endif // SPACESHIP_H

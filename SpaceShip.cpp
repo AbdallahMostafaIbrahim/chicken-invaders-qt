@@ -3,11 +3,14 @@
 #include "chick.h"
 #include <QGraphicsScene>
 #include <QKeyEvent>
+#include <QTimer>
+#include <iostream>
+
 
 
 
 SpaceShip::SpaceShip() : QGraphicsPixmapItem(),QObject() //: QGraphicsPixmapItem(QPixmap(":/img/Images/chicken.png").scaled(100,100))
- {
+{
     setPixmap(QPixmap(":/img/Images/ship.png").scaled(100,100));
 
 }
@@ -42,9 +45,5 @@ else if (event->key() == Qt::Key_Down){
 }
  }
 
-void SpaceShip::spawn(){
-    // create an enemy
-    Chick * enemy = new Chick();
-    scene()->addItem(enemy);
-}
+
 

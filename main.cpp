@@ -2,8 +2,8 @@
 #include "SpaceShip.h"
 #include <QGraphicsScene>
 #include <QGraphicsView>
-#include <QObject>
 #include <QTimer>
+#include "spawner.h"
 
 int main(int argc, char *argv[])
 {
@@ -35,11 +35,8 @@ int main(int argc, char *argv[])
     //set pos of player
     player->setPos(view->width()/2,view->height() - player->pixmap().height());
 
-
-     // spawn enemies
-    QTimer * timer = new QTimer();
-    QObject::connect(timer,SIGNAL(timeout()),player,SLOT(spawn()));
-    timer->start(2000);
+    // Instantiate Spawner
+    Spawner spawner(scene);
 
     return a.exec();
 }
