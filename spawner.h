@@ -1,6 +1,7 @@
 #ifndef SPAWNER_H
 #define SPAWNER_H
 #include <QObject>
+#include <QTimer>
 #include <QGraphicsScene>
 
 class Spawner : public QObject
@@ -9,6 +10,7 @@ class Spawner : public QObject
 public:
     Spawner(QGraphicsScene*);
 private:
+    static QTimer* timer;
     QGraphicsScene* scene;
 public slots:
     void spawn();

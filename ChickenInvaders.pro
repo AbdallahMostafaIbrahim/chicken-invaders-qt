@@ -14,14 +14,16 @@ SOURCES += \
     chick.cpp \
     main.cpp \
     mainwindow.cpp \
-    spawner.cpp
+    spawner.cpp \
+    stats.cpp
 
 HEADERS += \
     SpaceShip.h \
     bullet.h \
     chick.h \
     mainwindow.h \
-    spawner.h
+    spawner.h \
+    stats.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

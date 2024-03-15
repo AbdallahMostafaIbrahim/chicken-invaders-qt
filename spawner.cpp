@@ -3,10 +3,13 @@
 #include "chick.h"
 #include <QGraphicsScene>
 
+
+QTimer* Spawner::timer = new QTimer();
+
 Spawner::Spawner(QGraphicsScene * scene) {
     this->scene = scene;
     // spawn enemies
-    QTimer * timer = new QTimer();
+
     connect(timer, SIGNAL(timeout()), this, SLOT(spawn()));
     timer->start(2000);
 }

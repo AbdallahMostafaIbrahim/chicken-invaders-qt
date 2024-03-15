@@ -3,6 +3,8 @@
 #include <QGraphicsScene>
 #include <QList>
 #include <stdlib.h>
+#include "stats.h"
+#include "SpaceShip.h"
 
 Chick::Chick() : QGraphicsPixmapItem(),QObject()
 {
@@ -21,10 +23,6 @@ Chick::Chick() : QGraphicsPixmapItem(),QObject()
 }
 
 void Chick::move(){
-
-
-
-
     // move enemy down
     if(goRight)
     {
@@ -39,9 +37,27 @@ void Chick::move(){
             goRight = true;
     }
 
-        if (pos().y() + pixmap().height() < 0){
+    if (pos().y() + pixmap().height() < 0){
+        Stats::decrease();
         scene()->removeItem(this);
         delete this;
+    }
+
+
+    QList<QGraphicsItem *> colliding_items = collidingItems();
+    for (int i = 0, n = colliding_items.size(); i < n; ++i){
+        if (typeid(*(colliding_items[i])) == typeid(SpaceShip)){
+            // increase score
+
+
+            // remove the chick
+            scene()->removeItem(this);
+
+            Stats::decrease();
+
+            delete this;
+            return;
+        }
     }
 }
 

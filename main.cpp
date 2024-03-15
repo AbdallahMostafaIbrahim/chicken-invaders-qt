@@ -2,8 +2,11 @@
 #include "SpaceShip.h"
 #include <QGraphicsScene>
 #include <QGraphicsView>
+#include <QGraphicsTextItem>
 #include <QTimer>
+#include <QFont>
 #include "spawner.h"
+#include "stats.h"
 
 int main(int argc, char *argv[])
 {
@@ -36,6 +39,15 @@ int main(int argc, char *argv[])
 
     //set pos of player
     player->setPos(view->width()/2,view->height() - player->pixmap().height());
+
+    QGraphicsTextItem* scoreText = new QGraphicsTextItem();
+    QGraphicsTextItem* healthText = new QGraphicsTextItem();
+
+    scene->addItem(scoreText);
+    scene->addItem(healthText);
+
+    Stats::setHealthText(healthText);
+    Stats::setScoreText(scoreText);
 
     // Instantiate Spawner
     Spawner spawner(scene);

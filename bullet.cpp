@@ -3,6 +3,7 @@
 #include <QGraphicsScene>
 #include <QList>
 #include "chick.h"
+#include "stats.h"
 
 #include <QDebug>
 
@@ -23,6 +24,9 @@ Bullet::Bullet(): QGraphicsPixmapItem(),QObject()
      QList<QGraphicsItem *> colliding_items = collidingItems();
      for (int i = 0, n = colliding_items.size(); i < n; ++i){
          if (typeid(*(colliding_items[i])) == typeid(Chick)){
+             // increase score
+             Stats::increase();
+
              // remove them both
              scene()->removeItem(colliding_items[i]);
              scene()->removeItem(this);
