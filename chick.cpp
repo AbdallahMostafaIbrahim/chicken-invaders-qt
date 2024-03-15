@@ -4,12 +4,12 @@
 #include <QList>
 #include <stdlib.h>
 #include "stats.h"
-#include "SpaceShip.h"
+#include "spaceship.h"
 #include <QMediaPlayer>
 #include <QAudioOutput>
 
 
-Chick::Chick() : QObject(), QGraphicsPixmapItem()
+Chick::Chick() : QObject(), QGraphicsPixmapItem(QPixmap(":/img/Images/chicken.png").scaled(100,100))
 {
     audioOutput = new QAudioOutput();
     soundEffect = new QMediaPlayer();
@@ -17,35 +17,30 @@ Chick::Chick() : QObject(), QGraphicsPixmapItem()
     soundEffect->setAudioOutput(audioOutput);
     audioOutput->setVolume(50);
 
-    goRight =rand() % 2;
-    setPixmap(QPixmap(":/img/Images/chicken.png").scaled(100,100));
-
     int random_number = rand() % 700;
     setPos(random_number,0);
+    goRight = rand() % 2;
 
-
-    // connect
     QTimer * timer = new QTimer(this);
     connect(timer,SIGNAL(timeout()),this,SLOT(move()));
-
     timer->start(50);
 }
 
 void Chick::move(){
-    // move enemy down
     if(goRight)
     {
-    setPos(x()+2,y()+5);
+        setPos(x()+2,y()+5);
         if (pos().x() + 100 >= 800)
-        goRight = false;
+            goRight = false;
     }
     else
     {
-     setPos(x()-2,y()+5);
-        if (pos().x() - 100 <= 0)
+        setPos(x()-2,y()+5);
+        if (pos().x() <= 0)
             goRight = true;
     }
 
+    // When chicken reaches the bottom, delete it and decrease health
     if (pos().y() + pixmap().height() > scene()->height()){
         Stats::decrease();
         scene()->removeItem(this);
@@ -55,13 +50,17 @@ void Chick::move(){
 
 
     QList<QGraphicsItem *> colliding_items = collidingItems();
-    for (int i = 0, n = colliding_items.size(); i < n; ++i){
-        if (typeid(*(colliding_items[i])) == typeid(SpaceShip)){
+    for (int i = 0, n = colliding_items.size(); i < n; ++i)
+    {
+        SpaceShip* ship = dynamic_cast<SpaceShip*>(colliding_items[i]);
+        if (ship != nullptr)
+        {
             soundEffect->play();
 
-            // remove the chick
             scene()->removeItem(this);
+
             Stats::decrease();
+
             delete this;
             return;
         }

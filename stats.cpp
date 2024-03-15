@@ -1,4 +1,5 @@
 #include "stats.h"
+#include "spawner.h"
 #include <QString>
 #include <QMessageBox>
 #include <QGraphicsScene>
@@ -10,7 +11,6 @@ int Stats::health = 3;
 int Stats::score = 0;
 QGraphicsTextItem* Stats::healthText = nullptr;
 QGraphicsTextItem* Stats::scoreText = nullptr;
-
 
 void Stats::setHealthText(QGraphicsTextItem* hText) {
     healthText = hText;
@@ -44,6 +44,7 @@ void Stats::decrease() {
 
     if(health == 0) {
         s->clear();
+        Spawner::stopSpawning();
         QGraphicsTextItem* gameOverText = new QGraphicsTextItem();
         gameOverText->setDefaultTextColor(Qt::red);
         gameOverText->setFont(QFont("serif", 48));
@@ -62,11 +63,10 @@ void Stats::decrease() {
         QMessageBox* msg = new QMessageBox();
         msg->setWindowTitle(QString("GET BETTER."));
         msg->setMinimumHeight(500);
-        msg->setMinimumWidth(500);
-        msg->setText(QString("GAME OVER. Your score was") + QString::number(score));
+        msg->setMinimumWidth(600);
+        msg->setText(QString("GAME OVER. Your score was ") + QString::number(score));
         msg->exec();
     }
-
 }
 
 

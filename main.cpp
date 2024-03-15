@@ -1,45 +1,46 @@
 #include <QApplication>
-#include "SpaceShip.h"
+#include "spaceship.h"
+#include "spawner.h"
+#include "stats.h"
 #include <QGraphicsScene>
 #include <QGraphicsView>
 #include <QGraphicsTextItem>
 #include <QTimer>
 #include <QFont>
-#include "spawner.h"
-#include "stats.h"
 #include <QMediaPlayer>
 #include <QAudioOutput>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    //create scene
+
+    // Create scene
     QGraphicsScene * scene = new QGraphicsScene();
 
-    // add chick to the scene
+    // Add chick to the scene
     QGraphicsPixmapItem * player = new SpaceShip();
-    //player->setPos()
 
-    //add player to scene
+
+    // Add player to scene
     scene-> addItem(player);
 
-    //remove scroll bars
+    // Remove scroll bars
     QGraphicsView * view = new QGraphicsView(scene);
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-    //make player focusable
+    // Make player focusable
     player->setFlag(QGraphicsItem::ItemIsFocusable);
     player->setFocus();
 
-    // show the view
+    // Show the view
     view->show();
     view->setFixedSize(800,600);
     scene->setSceneRect(0,0,800,600);
     QPixmap bgImage(":/img/Images/space.jpg");
     scene->setBackgroundBrush(bgImage.scaled(scene->width(),scene->height(),Qt::IgnoreAspectRatio,Qt::SmoothTransformation));
 
-    //set pos of player
+    // Set pos of player
     player->setPos(view->width()/2,view->height() - player->pixmap().height());
 
     QGraphicsTextItem* scoreText = new QGraphicsTextItem();

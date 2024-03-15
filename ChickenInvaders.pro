@@ -14,7 +14,6 @@ SOURCES += \
     bullet.cpp \
     chick.cpp \
     main.cpp \
-    mainwindow.cpp \
     spawner.cpp \
     stats.cpp
 
@@ -22,7 +21,6 @@ HEADERS += \
     SpaceShip.h \
     bullet.h \
     chick.h \
-    mainwindow.h \
     spawner.h \
     stats.h
 

@@ -9,6 +9,7 @@ class Spawner : public QObject
     Q_OBJECT
 public:
     Spawner(QGraphicsScene*);
+    static void stopSpawning();
 private:
     static QTimer* timer;
     QGraphicsScene* scene;
