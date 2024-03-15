@@ -3,8 +3,6 @@
 #include <QGraphicsScene>
 #include <QList>
 #include <stdlib.h>
-#include "stats.h"
-#include "SpaceShip.h"
 
 Chick::Chick() : QGraphicsPixmapItem(),QObject()
 {
@@ -23,41 +21,34 @@ Chick::Chick() : QGraphicsPixmapItem(),QObject()
 }
 
 void Chick::move(){
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
+>>>>>>> 54cf620bbb013c156f016e4fe90f3770468cac98
+=======
+
+
+
+
+>>>>>>> parent of 54cf620 (stats)
     // move enemy down
     if(goRight)
     {
-    setPos(x()+2,y()+5);
+    setPos(x()+2,y()+2);
         if (pos().x() + 100 >= 800)
         goRight = false;
     }
     else
     {
-     setPos(x()-2,y()+5);
-        if (pos().x() - 100 <= 0)
+     setPos(x()-2,y()+2);
+        if (pos().x() <= 0)
             goRight = true;
     }
 
-    if (pos().y() + pixmap().height() < 0){
-        Stats::decrease();
+        if (pos().y() + pixmap().height() < 0){
         scene()->removeItem(this);
         delete this;
-    }
-
-
-    QList<QGraphicsItem *> colliding_items = collidingItems();
-    for (int i = 0, n = colliding_items.size(); i < n; ++i){
-        if (typeid(*(colliding_items[i])) == typeid(SpaceShip)){
-            // increase score
-
-
-            // remove the chick
-            scene()->removeItem(this);
-
-            Stats::decrease();
-
-            delete this;
-            return;
-        }
     }
 }
 

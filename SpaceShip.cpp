@@ -5,6 +5,8 @@
 #include <QKeyEvent>
 #include <QTimer>
 #include <iostream>
+#include <QMediaPlayer>
+
 
 
 
@@ -29,9 +31,16 @@ else if (event->key() == Qt::Key_Right){
 
 else if (event->key() == Qt::Key_Space){
     // create a bullet
+
     Bullet * bullet = new Bullet();
     bullet->setPos(x()+32,y());
     scene()->addItem(bullet);
+    //play sound
+
+    QMediaPlayer *music = new QMediaPlayer();
+    music->setMedia(QUrl::fromLocalFile(":/sound effects/Sound effects/blaster-2-81267.mp3"));
+    music->setVolume(50);
+    music->play();
 }
 
 else if (event->key() == Qt::Key_Up){
@@ -44,6 +53,9 @@ else if (event->key() == Qt::Key_Down){
         setPos(x(),y()+10);
 }
  }
+
+
+
 
 
 

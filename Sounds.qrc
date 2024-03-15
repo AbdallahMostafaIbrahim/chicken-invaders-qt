@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/sound effects">
+        <file>Sound effects/blaster-2-81267.mp3</file>
+        <file>Sound effects/chicken-single-alarm-call-6056.mp3</file>
+        <file>Sound effects/game-over-arcade-6435.mp3</file>
+    </qresource>
+</RCC>

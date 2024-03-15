@@ -8,8 +8,13 @@
 class SpaceShip : public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
+private:
+    int score;
+    int health;
 public:
     SpaceShip();
+
+
     void keyPressEvent(QKeyEvent * event);
 };
 

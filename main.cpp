@@ -2,11 +2,16 @@
 #include "SpaceShip.h"
 #include <QGraphicsScene>
 #include <QGraphicsView>
-#include <QGraphicsTextItem>
 #include <QTimer>
-#include <QFont>
 #include "spawner.h"
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include"stats.h"
+=======
 #include "stats.h"
+>>>>>>> 54cf620bbb013c156f016e4fe90f3770468cac98
+=======
+>>>>>>> parent of 54cf620 (stats)
 
 int main(int argc, char *argv[])
 {
@@ -16,10 +21,11 @@ int main(int argc, char *argv[])
 
     // add chick to the scene
     QGraphicsPixmapItem * player = new SpaceShip();
-    //player->setPos()
+    Stats * stats = new Stats();
 
-    //add player to scene
+    //add player and stats to scene
     scene-> addItem(player);
+
 
     //remove scroll bars
     QGraphicsView * view = new QGraphicsView(scene);
@@ -39,15 +45,6 @@ int main(int argc, char *argv[])
 
     //set pos of player
     player->setPos(view->width()/2,view->height() - player->pixmap().height());
-
-    QGraphicsTextItem* scoreText = new QGraphicsTextItem();
-    QGraphicsTextItem* healthText = new QGraphicsTextItem();
-
-    scene->addItem(scoreText);
-    scene->addItem(healthText);
-
-    Stats::setHealthText(healthText);
-    Stats::setScoreText(scoreText);
 
     // Instantiate Spawner
     Spawner spawner(scene);

@@ -1,4 +1,5 @@
-QT       += core gui
+QT       += core gui \
+         multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -14,16 +15,14 @@ SOURCES += \
     chick.cpp \
     main.cpp \
     mainwindow.cpp \
-    spawner.cpp \
-    stats.cpp
+    spawner.cpp
 
 HEADERS += \
     SpaceShip.h \
     bullet.h \
     chick.h \
     mainwindow.h \
-    spawner.h \
-    stats.h
+    spawner.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -31,4 +30,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
-    Images.qrc
+    Images.qrc \
+    Sounds.qrc
