@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
     QGraphicsScene * scene = new QGraphicsScene();
 
     // add chick to the scene
-    QGraphicsPixmapItem * player = new SpaceShip ();
+    QGraphicsPixmapItem * player = new SpaceShip();
     //player->setPos()
 
     //add player to scene
@@ -31,6 +31,8 @@ int main(int argc, char *argv[])
     view->show();
     view->setFixedSize(800,600);
     scene->setSceneRect(0,0,800,600);
+    QPixmap bgImage(":/img/Images/space.jpg");
+    scene->setBackgroundBrush(bgImage.scaled(scene->width(),scene->height(),Qt::IgnoreAspectRatio,Qt::SmoothTransformation));
 
     //set pos of player
     player->setPos(view->width()/2,view->height() - player->pixmap().height());
