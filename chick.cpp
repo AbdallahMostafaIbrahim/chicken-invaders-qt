@@ -35,7 +35,7 @@ void Chick::move(){
     else
     {
      setPos(x()-2,y()+5);
-        if (pos().x() + 100 <= 0)
+        if (pos().x() - 100 <= 0)
             goRight = true;
     }
 
