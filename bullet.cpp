@@ -4,12 +4,21 @@
 #include <QList>
 #include "chick.h"
 #include "stats.h"
+#include <QMediaPlayer>
+#include <QAudioOutput>
 
 #include <QDebug>
 
 Bullet::Bullet(): QGraphicsPixmapItem(),QObject()
  {
     setPixmap(QPixmap(":/img/Images/red_laser.png").scaled(40,40));
+
+    audioOutput = new QAudioOutput();
+    soundEffect = new QMediaPlayer();
+    soundEffect->setSource(QUrl("qrc:/sounds/sounds/blaster-2-81267.mp3"));
+    soundEffect->setAudioOutput(audioOutput);
+    audioOutput->setVolume(50);
+    soundEffect->play();
 
     //connect timer
 
@@ -26,6 +35,8 @@ Bullet::Bullet(): QGraphicsPixmapItem(),QObject()
          if (typeid(*(colliding_items[i])) == typeid(Chick)){
              // increase score
              Stats::increase();
+             soundEffect->setSource(QUrl("qrc:/sounds/sounds/chicken-single-alarm-call-6056.mp3"));
+             soundEffect->play();
 
              // remove them both
              scene()->removeItem(colliding_items[i]);

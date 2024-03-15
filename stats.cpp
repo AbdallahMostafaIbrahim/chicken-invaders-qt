@@ -3,11 +3,14 @@
 #include <QMessageBox>
 #include <QGraphicsScene>
 #include <QFont>
+#include <QMediaPlayer>
+#include <QAudioOutput>
 
 int Stats::health = 3;
 int Stats::score = 0;
 QGraphicsTextItem* Stats::healthText = nullptr;
 QGraphicsTextItem* Stats::scoreText = nullptr;
+
 
 void Stats::setHealthText(QGraphicsTextItem* hText) {
     healthText = hText;
@@ -46,6 +49,13 @@ void Stats::decrease() {
         gameOverText->setPos(s->width() / 2 - 180, s->height() / 2 - 48);
 
         s->addItem(gameOverText);
+
+        QAudioOutput* audioOutput = new QAudioOutput();
+        QMediaPlayer* soundEffect = new QMediaPlayer();
+        soundEffect->setSource(QUrl("qrc:/sounds/sounds/game-over-arcade-6435.mp3"));
+        soundEffect->setAudioOutput(audioOutput);
+        audioOutput->setVolume(50);
+        soundEffect->play();
 
         QMessageBox* msg = new QMessageBox();
         msg->setWindowTitle(QString("GET BETTER."));

@@ -7,6 +7,8 @@
 #include <QFont>
 #include "spawner.h"
 #include "stats.h"
+#include <QMediaPlayer>
+#include <QAudioOutput>
 
 int main(int argc, char *argv[])
 {
@@ -51,6 +53,14 @@ int main(int argc, char *argv[])
 
     // Instantiate Spawner
     Spawner spawner(scene);
+
+    QAudioOutput* audioOutput = new QAudioOutput();
+    QMediaPlayer* soundEffect = new QMediaPlayer();
+    soundEffect->setSource(QUrl("qrc:/sounds/sounds/soundtrack.mp3"));
+    soundEffect->setAudioOutput(audioOutput);
+    audioOutput->setVolume(50);
+    soundEffect->setLoops(1000);
+    soundEffect->play();
 
     return a.exec();
 }

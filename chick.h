@@ -2,13 +2,15 @@
 #define CHICK_H
 #include <QGraphicsRectItem>
 #include <QGraphicsPixmapItem>
+#include <QMediaPlayer>
 
 class Chick : public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 private:
     bool goRight;
-
+    QMediaPlayer* soundEffect;
+    QAudioOutput* audioOutput;
 public:
     Chick();
 
