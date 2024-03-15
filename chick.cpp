@@ -6,7 +6,7 @@
 #include "stats.h"
 #include "SpaceShip.h"
 
-Chick::Chick() : QGraphicsPixmapItem(),QObject()
+Chick::Chick() : QObject(), QGraphicsPixmapItem()
 {
     goRight =rand() % 2;
     setPixmap(QPixmap(":/img/Images/chicken.png").scaled(100,100));
@@ -47,14 +47,9 @@ void Chick::move(){
     QList<QGraphicsItem *> colliding_items = collidingItems();
     for (int i = 0, n = colliding_items.size(); i < n; ++i){
         if (typeid(*(colliding_items[i])) == typeid(SpaceShip)){
-            // increase score
-
-
             // remove the chick
             scene()->removeItem(this);
-
             Stats::decrease();
-
             delete this;
             return;
         }
